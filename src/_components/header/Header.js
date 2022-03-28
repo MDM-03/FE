@@ -116,23 +116,20 @@ class Header extends React.Component {
 										<Link to = "/">Home</Link>
 									</li>
 
-									<li className={`has-submenu ${pathname === ('/teacher-dashboard') ? 'active' : pathname === ('/appointments') ? 'active' : pathname === ('/schedule-timings') ? 'active' : pathname === ('/add-billing') ? 'active' : pathname === ('/add-enquiry') ? 'active' : pathname === ('/edit-billing') ? 'active' : pathname === ('/edit-enquiry') ? 'active' : pathname === ('/my-students') ? 'active' : pathname === ('/student-profile') ? 'active' : pathname === ('/teacher-profile-settings') ? 'active' : pathname === ('/reviews') ? 'active' : pathname === ('/teacher-register') ? 'active' : ''}`}>
-										<Link to="">Teachers<FontAwesomeIcon icon={faChevronDown} /></Link>
+									<li className={`has-submenu ${pathname === ('/teacher-dashboard') ? 'active' : pathname === ('/appointments') ? 'active' : pathname === ('/add-billing') ? 'active' : pathname === ('/add-enquiry') ? 'active' : pathname === ('/edit-billing') ? 'active' : pathname === ('/edit-enquiry') ? 'active' : pathname === ('/my-students') ? 'active' : pathname === ('/student-profile') ? 'active' : pathname === ('/teacher-profile-settings') ? 'active' : pathname === ('/reviews') ? 'active' : pathname === ('/teacher-register') ? 'active' : ''}`}>
+										<Link to="">Doctors<FontAwesomeIcon icon={faChevronDown} /></Link>
 										<ul className="submenu">
 											<li className={`${pathname === ('/teacher-dashboard') ? 'active' : ''}`}>
-												<Link to = "/teacher-dashboard">Teachers Dashboard</Link>
+												<Link to = "/teacher-dashboard">Doctor Dashboard</Link>
 											</li>
 											<li className={`${pathname === ('/appointments') ? 'active' : ''}`}>
 												<Link to = "/appointments">Appointments</Link>
 											</li>
-											<li className={`${pathname === ('/schedule-timings') ? 'active' : ''}`}>
-												<Link to = "/schedule-timings">Schedule Timing</Link>
-											</li>
 											<li className={`${pathname === ('/my-students') ? 'active' : ''}`}>
-												<Link to = "/my-students">Students List</Link>
+												<Link to = "/my-students">Customer List</Link>
 											</li>
 											<li className={`${pathname === ('/student-profile') ? 'active' : pathname === ('/add-billing') ? 'active' : pathname === ('/edit-billing') ? 'active' : pathname === ('/add-enquiry') ? 'active' : pathname === ('/edit-enquiry') ? 'active' : ''}`}>
-												<Link to = "/student-profile">Students Profile</Link>
+												<Link to = "/student-profile">Customer Profile</Link>
 											</li>
 											<li className={`${pathname === ('/invoices') ? 'active' : ''}`}>
 												<Link to = "/invoices">Invoices</Link>
@@ -141,31 +138,13 @@ class Header extends React.Component {
 												<Link to = "/teacher-profile-settings">Profile Settings</Link>
 											</li>								
 											<li className={`${pathname === ('/teacher-register') ? 'active' : ''}`}>
-												<Link to = "/teacher-register">Teachers Register</Link>
+												<Link to = "/teacher-register">Doctor Register</Link>
 											</li>
 										</ul>
 									</li>	
-									<li className={`has-submenu ${pathname === ('/map-grid') ? 'active' : pathname === ('/map-list') ? 'active' : pathname === ('/search') ? 'active' : pathname === ('/teacher-profile') ? 'active' : pathname === ('/booking') ? 'active' : pathname === ('/checkout') ? 'active' : pathname === ('/booking-success') ? 'active' : pathname === ('/student-dashboard') ? 'active' : pathname === ('/student-add-dependent') ? 'active' : pathname === ('/favourites') ? 'active' : pathname === ('/profile-settings') ? 'active' : pathname === ('/change-password') ? 'active' : ''}`}>
+									<li className={`has-submenu ${ pathname === ('/booking') ? 'active' : pathname === ('/checkout') ? 'active' : pathname === ('/booking-success') ? 'active' : pathname === ('/student-dashboard') ? 'active' : pathname === ('/favourites') ? 'active' : pathname === ('/profile-settings') ? 'active' : pathname === ('/change-password') ? 'active' : ''}`}>
 										<Link to="">Students <FontAwesomeIcon icon={faChevronDown} /></Link>
 										<ul className="submenu">
-											<li className={`has-submenu ${pathname === ('/map-grid') ? 'active' : pathname === ('/map-list') ? 'active' : ''}`}>
-												<Link to="#">Teachers</Link>
-												<ul className="submenu">
-													<li className={`${pathname === ('/map-grid') ? 'active' : ''}`}>
-														<Link to = "/map-grid">Map Grid</Link>
-													</li>
-													<li className={`${pathname === ('/map-list') ? 'active' : ''}`}>
-														<Link to = "/map-list">Map List</Link>
-													</li>
-												</ul>
-											</li>
-
-											<li className={`${pathname === ('/search') ? 'active' : ''}`}>
-												<Link to = "/search">Search Teachers</Link>
-											</li>
-											<li className={`${pathname === ('/teacher-profile') ? 'active' : ''}`}>
-												<Link to = "/teacher-profile">Teachers Profile</Link>
-											</li>
 											<li className={`${pathname === ('/booking') ? 'active' : ''}`}>
 												<Link to = "/booking">Booking</Link>
 											</li>
@@ -176,13 +155,7 @@ class Header extends React.Component {
 												<Link to = "/booking-success">Booking Success</Link>
 											</li>
 											<li className={`${pathname === ('/student-dashboard') ? 'active' : ''}`}>
-												<Link to = "/student-dashboard">Students Dashboard</Link>
-											</li>
-											<li className={`${pathname === ('/student-dependent') ? 'active' : ''}`}>
-												<Link to = "/student-dependent">Students Dependent</Link>
-											</li>
-											<li className={`${pathname === ('/student-add-dependent') ? 'active' : ''}`}>
-												<Link to = "/student-add-dependent">Students Add Dependent</Link>
+												<Link to = "/student-dashboard">Customer Dashboard</Link>
 											</li>
 											<li className={`${pathname === ('/favourites') ? 'active' : ''}`}>
 												<Link to = "/favourites">Favourites</Link>
@@ -195,28 +168,14 @@ class Header extends React.Component {
 											</li>
 										</ul>
 									</li>
-									<li className={`has-submenu ${pathname === ('/calendar') ? 'active' : pathname === ('/components') ? 'active' : pathname === ('/invoices') ? 'active' : pathname === ('/invoice-view') ? 'active' : pathname === ('/blank-page') ? 'active' : pathname === ('/login') ? 'active' : pathname === ('/register') ? 'active' : pathname === ('/forgot-password') ? 'active' : '' }`}>
+									<li className={`has-submenu ${ pathname === ('/components') ? 'active' : pathname === ('/login') ? 'active' : pathname === ('/register') ? 'active' : pathname === ('/forgot-password') ? 'active' : '' }`}>
 										<Link to="">Pages <FontAwesomeIcon icon={faChevronDown} /></Link>
 										<ul className="submenu">
 											<li className={`${pathname === ('/search') ? 'active' : ''}`}>
-												<Link to = "/search">Search Teachers</Link>
-											</li>
-											<li className={`${pathname === ('/calendar') ? 'active' : ''}`}>
-												<Link to = "/calendar">Calendar</Link>
+												<Link to = "/search">Search Doctor</Link>
 											</li>
 											<li className={`${pathname === ('/components') ? 'active' : ''}`}>
 												<Link to = "/components">Components</Link>
-											</li>
-											<li className={`has-submenu ${pathname === ('/invoices') ? 'active' : pathname === ('/invoice-view') ? 'active' : ''}`}>
-												<Link to="">Invoices</Link>
-												<ul className="submenu">
-													<li className={`${pathname === ('/invoices') ? 'active' : ''}`}>
-														<Link to = "/invoices">Invoices</Link>
-													</li>
-													<li className={`${pathname === ('/invoice-view') ? 'active' : ''}`}>
-														<Link to = "/invoice-view">Invoice View</Link>
-													</li>
-												</ul>
 											</li>
 											<li className={`${pathname === ('/login') ? 'active' : ''}`}>
 												<Link to = "/login">Login</Link>
@@ -229,14 +188,11 @@ class Header extends React.Component {
 											</li>
 										</ul>
 									</li>
-									<li className={`has-submenu ${pathname === ('/blog-grid') ? 'active' : pathname === ('/blog-details') ? 'active' : ''}`}>
+									<li className={`has-submenu ${pathname === ('/blog-grid') ? 'active' :''}`}>
 										<Link to="">Blog <FontAwesomeIcon icon={faChevronDown} /></Link>
 										<ul className="submenu">
 											<li className={`${pathname === ('/blog-grid') ? 'active' : ''}`}>
 												<Link to = "/blog-grid">Blog Grid</Link>
-											</li>
-											<li className={`${pathname === ('/blog-details') ? 'active' : ''}`}>
-												<Link to = "/blog-details">Blog Details</Link>
 											</li>
 										</ul>
 									</li>

@@ -1,4 +1,3 @@
-export * from './calendar';
 export * from './components';
 export * from './forgot-password';
 export * from './invoice-view';

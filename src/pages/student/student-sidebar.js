@@ -45,13 +45,6 @@ class StudentSidebar extends React.Component {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/chat">
-                                        <FontAwesomeIcon icon={faComments} />
-                                        <span>Message</span>
-                                        <small className="unread-msg">23</small>
-                                    </Link>
-                                </li>
-                                <li>
                                     <Link to="/profile-settings">
                                         <FontAwesomeIcon icon={faUserCog} />
                                         <span>Profile Settings</span>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { TeacherSidebar } from '../teacher/teacher-sidebar';
+import { TeacherSidebar } from '../doctor/teacher-sidebar';
 
 // Import Image
 import UserImg from '../../assets/img/students/student.jpg';

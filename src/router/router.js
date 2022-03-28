@@ -25,7 +25,6 @@ import {
     TeacherChangePassword,
     TeacherDashboard,
     TeacherProfileSettings,
-    TeacherProfile,
     TeacherRegister,
     Register,
     ProfileSettings,
@@ -33,14 +32,8 @@ import {
     StudentDashboard,
     StudentProfile,  
     MyStudents,
-    TeacherGrid,
-    TeacherList,
-    Calendar,
-    ScheduleTimings,
     Appointments,
     MyAccount,
-    StudentAddDependent,
-    StudentDependent,
 
 } from '../pages';
 
@@ -80,7 +73,6 @@ class RouterComponent extends React.Component {
                         <Route path="/blog-list" component={BlogList} />
                         <Route path="/booking" component={Booking} />
                         <Route path="/booking-success" component={BookingSuccess} />
-                        <Route path="/calendar" component={Calendar} />
                         <Route path="/change-password" component={ChangePassword} />
                         <Route path="/checkout" component={Checkout} />
                         <Route path="/components" component={Components} />
@@ -94,21 +86,15 @@ class RouterComponent extends React.Component {
                         <Route path="/teacher-change-password" component={TeacherChangePassword} />
                         <Route path="/teacher-dashboard" component={TeacherDashboard} />
                         <Route path="/teacher-profile-settings" component={TeacherProfileSettings} />
-                        <Route path="/teacher-profile" component={TeacherProfile} />
                         <Route path="/teacher-register" component={TeacherRegister} />
                         <Route path="/register" component={Register} />
                         <Route path="/profile-settings" component={ProfileSettings} />
                         <Route path="/search" component={Search} />
                         <Route path="/student-dashboard" component={StudentDashboard} />
                         <Route path="/student-profile" component={StudentProfile} />
-                        <Route path="/my-students" component={MyStudents} />
-                        <Route path="/map-grid" component={TeacherGrid} />
-                        <Route path="/map-list" component={TeacherList} />                        
-                        <Route path="/schedule-timings" component={ScheduleTimings} />
+                        <Route path="/my-students" component={MyStudents} />               
                         <Route path="/appointments" component={Appointments} />
                         <Route path="/my-account" component={MyAccount} />
-                        <Route path="/student-add-dependent" component={StudentAddDependent} />
-                        <Route path="/student-dependent" component={StudentDependent} />
                     </Switch>
                     <Route render={(props) => <Footer {...props} />} />
                     
