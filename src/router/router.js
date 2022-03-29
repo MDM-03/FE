@@ -34,6 +34,8 @@ import {
     MyStudents,
     Appointments,
     MyAccount,
+    StaffDashboard,
+    RegisterAppointments
 
 } from '../pages';
 
@@ -50,6 +52,7 @@ import '../assets/plugins/fontawesome/css/all.min.css';
 
 // Custom CSS
 import '../assets/css/style.css';
+import { StaffSidebar } from "../pages/staff/staff-sidebar";
 
 class RouterComponent extends React.Component {
 
@@ -95,6 +98,10 @@ class RouterComponent extends React.Component {
                         <Route path="/my-students" component={MyStudents} />               
                         <Route path="/appointments" component={Appointments} />
                         <Route path="/my-account" component={MyAccount} />
+                        
+                        <Route path="/staff-dashboard" component={StaffDashboard} />
+                        <Route path="/staff-sidebar" component={StaffSidebar} />
+                        <Route path="/register-appointments" component={RegisterAppointments} />
                     </Switch>
                     <Route render={(props) => <Footer {...props} />} />
                     

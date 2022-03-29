@@ -6,3 +6,5 @@ export * from './booking';
 export * from './student';
 export * from './doctor';
 export * from './privacy-pages';
+
+export * from './staff';
