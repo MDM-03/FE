@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StudentSidebar } from './student-sidebar';
+import { CustomerSidebar } from './customer-sidebar';
 
 // Import Images
 import UserImg from '../../assets/img/students/student.jpg';
@@ -40,7 +40,7 @@ class ProfileSettings extends React.Component {
 						<div className="row">
 							{/* Profile Sidebar */}
 							<div className="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-								<StudentSidebar />
+								<CustomerSidebar />
 							</div>
 							{/* Profile Sidebar */}
 

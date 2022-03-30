@@ -6,3 +6,5 @@ export * from './favourites';
 export * from './profile-settings';
 export * from './search';
 export * from './my-account';
+export * from './customer-sidebar';
+export * from './register-appointments';

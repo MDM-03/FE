@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StudentSidebar } from './student-sidebar';
+import { CustomerSidebar } from './customer-sidebar';
 
 class ChangePassword extends React.Component {
     render() {
@@ -30,7 +30,7 @@ class ChangePassword extends React.Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-                                <StudentSidebar />
+                                <CustomerSidebar />
                             </div>
 
                             <div className="col-md-7 col-lg-8 col-xl-9">

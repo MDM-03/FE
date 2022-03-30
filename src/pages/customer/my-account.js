@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StudentSidebar } from './student-sidebar';
+import { CustomerSidebar } from './customer-sidebar';
 
 class MyAccount extends React.Component {
     render() {

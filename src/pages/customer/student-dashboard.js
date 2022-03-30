@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StudentSidebar } from './student-sidebar';
+import { CustomerSidebar } from './customer-sidebar';
 
 // Import Components
 import { Tabs, Tab } from "react-bootstrap";
@@ -52,7 +52,7 @@ class StudentDashboard extends React.Component {
 						<div className="row">
 							{/* Profile Sidebar */}
 							<div className="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-								<StudentSidebar />
+								<CustomerSidebar />
 							</div>
 							{/* Profile Sidebar */}
 
