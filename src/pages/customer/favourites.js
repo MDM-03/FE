@@ -51,7 +51,7 @@ class Favourites extends React.Component {
 
 						<div className="row">
 							<div className="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-								<StudentSidebar />
+								<CustomerSidebar />
 							</div>
 							<div className="col-md-7 col-lg-8 col-xl-9">
 								<div className="row row-grid">

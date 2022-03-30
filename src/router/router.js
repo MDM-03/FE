@@ -36,7 +36,9 @@ import {
     MyAccount,
     StaffDashboard,
     RegisterAppointments,
-    CustomerSidebar
+    CustomerSidebar,
+    MedicalRecord,
+    MedicalRecordView
 
 } from '../pages';
 
@@ -105,6 +107,9 @@ class RouterComponent extends React.Component {
                         <Route path="/register-appointments" component={RegisterAppointments} />
                         
                         <Route path="/customer-sidebar" component={CustomerSidebar} />
+                        
+                        <Route path="/medical-record" component={MedicalRecord} />
+                        <Route path="/medical-record-view" component={MedicalRecordView} />
                     </Switch>
                     <Route render={(props) => <Footer {...props} />} />
                     

@@ -50,12 +50,6 @@ class TeacherSidebar extends React.Component {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/invoices">
-                                        <FontAwesomeIcon icon={faFileAlt} />
-                                        <span>Invoices</span>
-                                    </Link>
-                                </li>
-                                <li>
                                     <Link to="/teacher-profile-settings">
                                         <FontAwesomeIcon icon={faUserCog} />
                                         <span>Profile Settings</span>

@@ -131,9 +131,6 @@ class Header extends React.Component {
 											<li className={`${pathname === ('/student-profile') ? 'active' : pathname === ('/add-billing') ? 'active' : pathname === ('/edit-billing') ? 'active' : pathname === ('/add-enquiry') ? 'active' : pathname === ('/edit-enquiry') ? 'active' : ''}`}>
 												<Link to="/student-profile">Customer Profile</Link>
 											</li>
-											<li className={`${pathname === ('/invoices') ? 'active' : ''}`}>
-												<Link to="/invoices">Invoices</Link>
-											</li>
 											<li className={`${pathname === ('/teacher-profile-settings') ? 'active' : ''}`}>
 												<Link to="/teacher-profile-settings">Profile Settings</Link>
 											</li>

@@ -6,7 +6,7 @@ import StudentImg from '../../assets/img/students/student.jpg';
 
 // Import Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBirthdayCake, faBookmark, faColumns, faCalendarCheck, faLock, faMapMarkerAlt, faSignOutAlt, faUserCog } from '@fortawesome/fontawesome-free-solid';
+import { faBirthdayCake, faBookmark, faColumns, faCalendarCheck, faLock, faMapMarkerAlt, faSignOutAlt, faUserCog, faFileAlt } from '@fortawesome/fontawesome-free-solid';
 
 class CustomerSidebar extends React.Component {
     render() {
@@ -42,6 +42,12 @@ class CustomerSidebar extends React.Component {
                                     <Link to="/register-appointments">
                                         <FontAwesomeIcon icon={faCalendarCheck} />
                                         <span>Register Appointments</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/medical-record">
+                                        <FontAwesomeIcon icon={faFileAlt} />
+                                        <span>Medical Record</span>
                                     </Link>
                                 </li>
                                 <li>
