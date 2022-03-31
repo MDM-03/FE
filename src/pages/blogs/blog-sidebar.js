@@ -14,8 +14,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
 class BlogSidebar extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            categories: []
+        };
+    }
+    componentDidMount() {
+        fetch("http://localhost:3000/category")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result)
+                    this.setState({
+                        isLoaded: true,
+                        categories: result.category
+                    })
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    })
+                }
+            )
+    }
+
     render() {
-        return(
+        return (
             <div>
                 {/* Search */}
                 <div className="card search-widget">
@@ -115,14 +144,11 @@ class BlogSidebar extends React.Component {
                         <h4 className="card-title">Blog Categories</h4>
                     </div>
                     <div className="card-body">
-                        <ul className="categories">
-                            <li><Link to="#">Online Services <span>(62)</span></Link></li>
-                            <li><Link to="#">Musics <span>(27)</span></Link></li>
-                            <li><Link to="#">Direct Appointment <span>(41)</span></Link></li>
-                            <li><Link to="#">Self Esteem Issues <span>(16)</span></Link></li>
-                            <li><Link to="#">Career Counselling <span>(55)</span></Link></li>
-                            <li><Link to="#">Students Meet <span>(07)</span></Link></li>
-                        </ul>
+                        {this.state.categories.map((item) => (
+                            <ul className="categories">
+                                <li><Link to="#">{item.Name} <span>(62)</span></Link></li>
+                            </ul>
+                        ))}
                     </div>
                 </div>
                 {/* Categories */}
