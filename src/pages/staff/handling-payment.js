@@ -25,8 +25,10 @@ class HandlingPayment extends React.Component {
 			error: null,
 			isLoaded: false,
 			update: false,
+			id: "",
 			order: []
 		};
+		this.handlePayment = this.handlePayment.bind(this);
 	}
 
 	componentDidMount() {
@@ -48,31 +50,28 @@ class HandlingPayment extends React.Component {
 				})
 	}
 
-	componentDidUpdate() {
-		if (this.state.update) {
-			fetch(url + 'order')
-				.then(res => res.json())
-				.then(
-					(result) => {
-						console.log(result)
-						this.setState({
-							isLoaded: true,
-							order: result.data,
-							update: false
-						})
-					},
-					(error) => {
-						this.setState({
-							isLoaded: true,
-							update: false,
-							error
-						})
+	handlePayment(id) {
+		fetch(url + `order/${id}`,
+			{
+				method: "PUT",
+				body: JSON.stringify({ "Status": "Đã thanh toán" })
+			})
+			.then(res => res.json())
+			.then(
+				(result) => {
+					console.log(result)
+					this.setState({
+						isLoaded: true,
+						update: false
 					})
-		}
-	}
-
-	onPaymentClick() {
-		this.setState({ update: true })
+				},
+				(error) => {
+					this.setState({
+						isLoaded: true,
+						update: false,
+						error
+					})
+				});
 	}
 
 	render() {
@@ -99,10 +98,10 @@ class HandlingPayment extends React.Component {
 								<td>{ord.Customer.Name}</td>
 								<td>{ord.Price}</td>
 								<td>{ord.RegisterAppointment.Status}</td>
-								<td>{true ?
+								<td>{ord.Status !== "Đã thanh toán" ?
 									<div>
 										<Button
-											id="PopoverFocus"
+											id={"PopoverFocus" + ord._id}
 											type="button"
 											disabled={ord.RegisterAppointment.Status === "Chưa chích" ? true : false}
 										>
@@ -110,7 +109,7 @@ class HandlingPayment extends React.Component {
 										</Button>
 										<UncontrolledPopover
 											placement="bottom"
-											target="PopoverFocus"
+											target={"PopoverFocus" + ord._id}
 											trigger="focus"
 										>
 											<PopoverHeader>
@@ -120,7 +119,7 @@ class HandlingPayment extends React.Component {
 												<p>Gói vaccine: {ord.Vaccine.Name}</p>
 												<p>Triệu chứng: {ord.Vaccine.Prevention}</p>
 												<p>Giá: {ord.Vaccine.Price}</p>
-												<Button onClick={() => this.onPaymentClick()}>Hoàn thành</Button>
+												<Button onClick={() => this.handlePayment(ord._id)}>Hoàn thành</Button>
 											</PopoverBody>
 										</UncontrolledPopover>
 									</div>
