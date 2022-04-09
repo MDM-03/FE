@@ -14,8 +14,9 @@ import formImg from '../../assets/img/features/feature-01.jpg';
 // Import Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faTrashAlt } from '@fortawesome/fontawesome-free-solid';
-
+const url = "http://localhost:3000/";
 class RegisterAppointments extends React.Component {
+
 	render() {
 		return (
 			<div>
@@ -191,12 +192,8 @@ class RegisterAppointments extends React.Component {
 													<label>Vaccine or Combo Vaccine <span className="text-danger">*</span></label>
 													<select className="form-control select">
 														<option>Select</option>
-														<option>Tên vaccine</option>
-														<option>Tên vaccine</option>
-														<option>Tên vaccine</option>
-														<option>Tên vaccine</option>
-														<option>Tên vaccine</option>
-														<option>Tên vaccine</option>
+														<option value={"623d82a25ca2c6ef79782880"}>GÓI VẮC XIN INFANRIX (0-9 THÁNG) - GÓI LINH ĐỘNG 1</option>
+														<option value={"625101ee4d0b42289ee91177"}>GÓI VẮC XIN INFANRIX (0-9 THÁNG) - GÓI LINH ĐỘNG 2</option>
 													</select>
 												</div>
 											</div>
@@ -232,7 +229,75 @@ class RegisterAppointments extends React.Component {
 								{/* Information Service*/}
 
 								<div className="submit-section submit-btn-bottom">
-									<button type="submit" className="btn btn-primary submit-btn">Save Changes</button>
+									<button type="submit" className="btn btn-primary submit-btn" onClick={() => {
+										const body = {
+											Name: "test",
+											Email: "string",
+											PhoneNumber: "string",
+											Address: "string",
+											Gender: "string",
+											City: "string",
+											TypeCustomer: "string",
+										};
+										fetch(url + `customer`, {
+											method: "POST",
+											headers: { "Content-Type": "application/json" },
+											body: JSON.stringify(body),
+										})
+											.then((res) => res.json())
+											.then(
+												(result) => {
+													const body1 = {
+														Diagnostic: "",
+														DayInject: "",
+														Status: "Chưa chích",
+														Date: new Date().toISOString(),
+														Customer: result._id,
+														Doctor: "623d83d25ca2c6ef79782887",
+														Vaccine: "623d82a25ca2c6ef79782880",
+													};
+													fetch(url + `appointment`, {
+														method: "POST",
+														headers: { "Content-Type": "application/json" },
+														body: JSON.stringify(body1),
+													})
+														.then((res) => res.json())
+														.then(
+															(result1) => {
+																const body2 = {
+																	Price: "14.190.000 VNĐ",
+																	Status: "Chưa thanh toán",
+																	Customer: result._id,
+																	RegisterAppointment: result1._id,
+																	Vaccine: "623d82a25ca2c6ef79782880",
+																};
+																fetch(url + `order`, {
+																	method: "POST",
+																	headers: { "Content-Type": "application/json" },
+																	body: JSON.stringify(body2),
+																})
+																	.then((res) => res.json())
+																	.then(
+																		(result) => {
+																			alert("Success")
+																		},
+																		(error) => {
+																			alert("Fail")
+																		},
+																	);
+															},
+															(error) => {
+																alert("Fail")
+															},
+														);
+												},
+												(error) => {
+													alert("Fail")
+												},
+											);
+
+										// await fetch(url + {})
+									}}>Save Changes</button>
 								</div>
 
 							</div>

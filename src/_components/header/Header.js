@@ -126,7 +126,7 @@ class Header extends React.Component {
 												<Link to="/appointments">Appointments</Link>
 											</li>
 											<li className={`${pathname === ('/my-students') ? 'active' : ''}`}>
-												<Link to="/my-students">Customer List</Link>
+												<Link to="/customer">Customer List</Link>
 											</li>
 											<li className={`${pathname === ('/student-profile') ? 'active' : pathname === ('/add-billing') ? 'active' : pathname === ('/edit-billing') ? 'active' : pathname === ('/add-enquiry') ? 'active' : pathname === ('/edit-enquiry') ? 'active' : ''}`}>
 												<Link to="/student-profile">Customer Profile</Link>

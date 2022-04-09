@@ -39,7 +39,8 @@ import {
     CustomerSidebar,
     MedicalRecord,
     MedicalRecordView,
-    HandlingPayment
+    HandlingPayment,
+    Customer
 
 } from '../pages';
 
@@ -102,7 +103,7 @@ class RouterComponent extends React.Component {
                         <Route path="/my-students" component={MyStudents} />               
                         <Route path="/appointments" component={Appointments} />
                         <Route path="/my-account" component={MyAccount} />
-                        
+                        <Route path="/customer" component={Customer} />
                         <Route path="/staff-dashboard" component={StaffDashboard} />
                         <Route path="/staff-sidebar" component={StaffSidebar} />
                         <Route path="/register-appointments" component={RegisterAppointments} />

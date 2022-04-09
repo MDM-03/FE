@@ -4,3 +4,4 @@ export * from './teacher-dashboard';
 export * from './teacher-profile-settings';
 export * from './teacher-register';
 export * from './appointments';
+export * from './customers';
