@@ -265,11 +265,10 @@ class RegisterAppointments extends React.Component {
 														.then(
 															(result1) => {
 																const body2 = {
-																	Price: "14.190.000 VNĐ",
 																	Status: "Chưa thanh toán",
 																	Customer: result._id,
 																	RegisterAppointment: result1._id,
-																	Vaccine: "623d82a25ca2c6ef79782880",
+																	Pack: "623d82a25ca2c6ef79782880",
 																};
 																fetch(url + `order`, {
 																	method: "POST",

@@ -24,8 +24,8 @@ class Customer extends React.Component {
             status: "",
             diagnostic: "",
             appointment: [],
+            vaccine_lst: []
         };
-        this.handlePayment = this.handlePayment.bind(this);
     }
 
     handleFetchOrder() {
@@ -46,38 +46,27 @@ class Customer extends React.Component {
                     });
                 },
             );
-    }
 
-    componentDidMount() {
-        this.handleFetchOrder();
-    }
-
-    handlePayment(id) {
-        const body = {
-            Status: "Đã thanh toán",
-        };
-        fetch(url + `order/${id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body),
-        })
+        fetch(url + "vaccine/pack")
             .then((res) => res.json())
             .then(
                 (result) => {
-                    this.handleFetchOrder();
                     this.setState({
                         isLoaded: true,
-                        update: false,
+                        vaccine_lst: result.pack
                     });
                 },
                 (error) => {
                     this.setState({
                         isLoaded: true,
-                        update: false,
                         error,
                     });
                 },
             );
+    }
+
+    componentDidMount() {
+        this.handleFetchOrder();
     }
 
     handleRowClick(app) {
@@ -138,9 +127,9 @@ class Customer extends React.Component {
                                     vaccine_id: app.Vaccine._id
                                 })
                             }}>
-                                {vaccine.map((vac) => vac === this.state.vaccine ?
-                                    <option selected>{vac}</option> :
-                                    <option>{vac}</option>
+                                {this.state.vaccine_lst.map((vac) => vac.NAMEPACK === this.state.vaccine ?
+                                    <option selected>{vac.NAMEPACK}</option> :
+                                    <option>{vac.NAMEPACK}</option>
                                 )}
                             </Input>
                         </td>
@@ -151,7 +140,7 @@ class Customer extends React.Component {
                     </tr>
                     <tr>
                         <th>Chuẩn đoán</th>
-                        <td><Input type='text' placeholder={this.state.diagnostic} id="diagnostic"/></td>
+                        <td><Input type='text' placeholder={this.state.diagnostic} id="diagnostic" /></td>
                     </tr>
                     {this.state.available &&
                         <Button onClick={() => {
@@ -161,12 +150,30 @@ class Customer extends React.Component {
                                 Customer: this.state.id,
                                 Doctor: "623d83d25ca2c6ef79782887",
                                 Vaccine: this.state.vaccine_id,
-                                Diagnostic: document.getElementById("diagnostic").value
+                                Diagnostic: document.getElementById("diagnostic").value,
+                                Pack: this.state.vaccine_id,
                             };
                             fetch(url + `appointment/${this.state.appointment_id}`, {
                                 method: "PUT",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(body),
+                            })
+                                .then((res) => res.json())
+                                .then((result) => {
+                                    this.handleFetchOrder();
+                                })
+                                .catch((error) => {
+                                    alert("Fail")
+                                })
+
+                            const body1 = {
+                                Pack: this.state.vaccine_id
+                            };
+
+                            fetch(url + `order/appointment/${this.state.appointment_id}`, {
+                                method: "PUT",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(body1),
                             })
                                 .then((res) => res.json())
                                 .then((result) => {

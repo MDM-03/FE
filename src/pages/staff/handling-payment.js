@@ -56,6 +56,7 @@ class HandlingPayment extends React.Component {
   }
 
   handlePayment(id) {
+    console.log(1)
     const body = {
       Status: "Đã thanh toán",
     };
@@ -106,7 +107,7 @@ class HandlingPayment extends React.Component {
                 <tr key={ord._id}>
                   <td>{++index}</td>
                   <td>{ord.Customer.Name}</td>
-                  <td>{ord.Price}</td>
+                  <td>{ord.Pack.TOTALPRICE}</td>
                   <td>{ord.RegisterAppointment.Status}</td>
                   <td>
                     {ord.Status !== "Đã thanh toán" ? (
@@ -129,9 +130,9 @@ class HandlingPayment extends React.Component {
                         >
                           <PopoverHeader>Thông tin hóa đơn</PopoverHeader>
                           <PopoverBody>
-                            <p>Gói vaccine: {ord.Vaccine.Name}</p>
-                            <p>Triệu chứng: {ord.Vaccine.Prevention}</p>
-                            <p>Giá: {ord.Vaccine.Price}</p>
+                            <p>Gói vaccine: {ord.Pack.NAMEPACK}</p>
+                            {/* <p>Triệu chứng: {ord.Vaccine.Prevention}</p> */}
+                            <p>Giá: {ord.Pack.TOTALPRICE}</p>
                             <Button onClick={() => this.handlePayment(ord._id)}>
                               Hoàn thành
                             </Button>
