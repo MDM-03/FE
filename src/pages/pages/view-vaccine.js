@@ -15,13 +15,13 @@ class VaccineView extends React.Component {
         };
     }
     componentDidMount() {
-        fetch("http://localhost:3000/vaccine/pack?fbclid=IwAR3ncjj3Ob4zbKmL5Pdzc0xCjXrlsw4up1eMMK4OsC1i6sJBTvmBdtE5dG8")
+        fetch("http://localhost:3000/vaccine/vaccinecate")
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        data: result.pack
+                        data: result.vaccine
                     })
                 },
                 (error) => {
@@ -72,32 +72,6 @@ class VaccineView extends React.Component {
 
                                     {/* Invoice Item */}
                                     <div className="invoice-item">
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <div className="invoice-info">
-                                                    <strong className="customer-text">Information Vaccine</strong>
-                                                    <p className="invoice-details invoice-details-two">
-                                                        {this.state.isLoaded ? this.state.data['customer']['Name'] : ''} Tên vaccine<br />
-
-                                                        <br />
-                                                        {this.state.isLoaded ? this.state.data['customer']['PhoneNumber'] : ''} Nguồn vaccine SOURCE <br />
-                                                        <br />
-                                                        {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} Giá vaccine PRICE<br />
-
-                                                        <br />
-                                                        {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} Tránh những bệnh PREVENTION<br />
-
-                                                        <br />
-                                                        {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} INFORMATION<br />
-
-                                                        <br />
-                                                        {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} OTHERDESCRIPTION<br />
-                                                    </p>
-                                                </div>
-                                                <br />
-
-                                            </div>
-                                        </div>
 
                                         {this.state.isLoaded ? this.state.data.map((item) => (
                                             <div className="row">
@@ -105,21 +79,21 @@ class VaccineView extends React.Component {
                                                     <div className="invoice-info">
                                                         <strong className="customer-text">Information Vaccine</strong>
                                                         <p className="invoice-details invoice-details-two">
-                                                            {this.state.isLoaded ? this.state.data['NAMEPACK'] : ''} <br />
+                                                            Tên Vaccine: {item['NAMEVACCINE']} <br />
 
                                                             <br />
-                                                            {this.state.isLoaded ? this.state.data['customer']['PhoneNumber'] : ''} Nguồn vaccine SOURCE <br />
+                                                            Nguồn: {item['SOURCE']} <br />
                                                             <br />
-                                                            {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} Giá vaccine PRICE<br />
+                                                            Chi Phí: {item['PRICE']} <br />
 
                                                             <br />
-                                                            {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} Tránh những bệnh PREVENTION<br />
+                                                            Ngừa bệnh: {item['PREVENTION']}<br />
 
                                                             <br />
-                                                            {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} INFORMATION<br />
+                                                            Số lượng: {item['QUANTITY']}<br />
 
                                                             <br />
-                                                            {this.state.isLoaded ? this.state.data['customer']['Address'] : ''} OTHERDESCRIPTION<br />
+                                                            Tên Danh mục: {item['NAMECATEGORY']} <br />
                                                         </p>
                                                     </div>
                                                     <br />

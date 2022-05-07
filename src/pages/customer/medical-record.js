@@ -11,7 +11,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/fontawesome-free-solid';
 
 class MedicalRecord extends React.Component {
-	
+	constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            data: []
+        };
+    }
+    componentDidMount() {
+        fetch("http://localhost:3000/healthrecord")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        data: result.data[0]
+                    })
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    })
+                }
+            )
+    }
     render() {
         return (
 			<div>
@@ -53,7 +78,7 @@ class MedicalRecord extends React.Component {
 													<tr>
 														<th>Status</th>
 														<th>Doctor</th>
-														<th>Amount</th>
+														<th>Vaccine</th>
 														<th>Paid On</th>
 														<th></th>
 													</tr>
@@ -68,11 +93,11 @@ class MedicalRecord extends React.Component {
 																<Link to="" className="avatar avatar-sm mr-2">
 																	<img className="avatar-img rounded-circle" src={UserImg} alt="User Image" />
 																</Link>
-																<Link to="">Julie Sterns</Link>
+																<Link to="">{this.state.isLoaded ? this.state.data['record'][0]['Doctor']['name'] : ''}</Link>
 															</h2>
 														</td>
-														<td><Link to="view-vaccine">tới thông tin vaccine</Link></td>
-														<td>14 Nov 2019</td>
+														<td><Link to="view-vaccine">{this.state.isLoaded ?  this.state.data['record'][0]['Vaccine']['name'] : ''}</Link></td>
+														<td>{this.state.isLoaded ?  this.state.data['record'][0]['Vaccine']['Price'] : ''}</td>
 														<td className="text-right">
 															<div className="table-action">
 																<Link to="/view-medical-record" className="btn btn-sm bg-info-light mr-1">
