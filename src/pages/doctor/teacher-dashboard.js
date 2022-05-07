@@ -54,6 +54,9 @@ class TeacherDashboard extends React.Component {
     }
 	
     render() {
+		const {data} = this.state;
+		console.log(data);
+		console.log(typeof(data.record));
         return (
 			<div>
 				{/* Breadcrumb */}
@@ -147,66 +150,25 @@ class TeacherDashboard extends React.Component {
 																		<tr>
 																			<th>Customer Name</th>
 																			<th>Appt Date</th>
-																			<th>Purpose</th>
 																			<th>Type</th>
 																			<th className="text-center">Paid Amount</th>
 																			<th></th>
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<tr>
-																			<td>
-																				<h2 className="table-avatar">
-																					<Link to="/student-profile" className="avatar avatar-sm mr-2"><img className="avatar-img rounded-circle" src={UserAvatar} alt="User Image" /></Link>
-																					<Link to="/student-profile">Julie Sterns <span>#ST0016</span></Link>
-																				</h2>
-																			</td>
-																			<td>11 Nov 2019 <span className="d-block text-info">10.00 AM</span></td>
-																			<td>General</td>
-																			<td>New Customer</td>
-																			<td className="text-center">$150</td>
-																			<td className="text-right">
-																				<div className="table-action">
-																					<Link to="#" className="btn btn-sm bg-info-light mr-1">
-																						<FontAwesomeIcon icon={faEye} /> View
-																					</Link>
-																					
-																					<Link to="#" className="btn btn-sm bg-success-light mr-1">
-																						<FontAwesomeIcon icon={faCheck} /> Accept
-																					</Link>
-																					<Link to="#" className="btn btn-sm bg-danger-light">
-																						<FontAwesomeIcon icon={faTimes} /> Cancel
-																					</Link>
-																				</div>
-																			</td>
-																		</tr>
-
 																		{
-																			this.state.isLoaded ? this.state.data['record'].map(item => (
+																			this.state.isLoaded ? data.map(item => (
 																				<tr>
 																					<td>
 																						<h2 className="table-avatar">
 																							<Link to="/student-profile" className="avatar avatar-sm mr-2"><img className="avatar-img rounded-circle" src={UserAvatar} alt="User Image" /></Link>
-																							<Link to="/student-profile">{item['Customer']['Name']} <span>#ST0016</span></Link>
+																							<Link to="/student-profile">{item.Customer.Name}</Link>
 																						</h2>
 																					</td>
-																					<td>{item['Customer']['Date']}</td>
-																					<td>General</td>
-																					<td>New Customer</td>
-																					<td className="text-center">$150</td>
+																					<td>{item.Date}</td>
+																					<td>{item.Customer.TypeCustomer}</td>
+																					<td className="text-center">{item.Vaccine.Price}</td>
 																					<td className="text-right">
-																						<div className="table-action">
-																							<Link to="#" className="btn btn-sm bg-info-light mr-1">
-																								<FontAwesomeIcon icon={faEye} /> View
-																							</Link>
-																							
-																							<Link to="#" className="btn btn-sm bg-success-light mr-1">
-																								<FontAwesomeIcon icon={faCheck} /> Accept
-																							</Link>
-																							<Link to="#" className="btn btn-sm bg-danger-light">
-																								<FontAwesomeIcon icon={faTimes} /> Cancel
-																							</Link>
-																						</div>
 																					</td>
 																				</tr>
 																			)) : ''
