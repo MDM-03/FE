@@ -31,10 +31,8 @@ class ForgotPassword extends React.Component {
 				<div className="account-page">
 					<div className="content">
 						<div className="container">
-							
 							<div className="row">
 								<div className="col-md-8 offset-md-2">
-									
 									{/* Account Content */}
 									<div className="account-content">
 										<div className="row align-items-center justify-content-center">
@@ -59,17 +57,13 @@ class ForgotPassword extends React.Component {
 													<button className="btn btn-primary btn-block btn-lg login-btn" type="submit">Reset Password</button>
 												</form>
 												{/* Forgot Password Form */}
-												
 											</div>
 										</div>
 									</div>
 									{/* Account Content */}
-									
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 				</div>					
 				{/* Page Content */}

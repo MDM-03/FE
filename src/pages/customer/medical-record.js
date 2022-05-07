@@ -33,7 +33,8 @@ class MedicalRecord extends React.Component {
 				</div>
 				{/* Breadcrumb */}
 
-				{/* Page Content */}
+				{/* Page Content 
+				*/}
 				<div className="content">
 					<div className="container">
 
@@ -50,7 +51,7 @@ class MedicalRecord extends React.Component {
 											<table className="table table-hover table-center mb-0">
 												<thead>
 													<tr>
-														<th>Medical Record No</th>
+														<th>Status</th>
 														<th>Doctor</th>
 														<th>Amount</th>
 														<th>Paid On</th>
@@ -60,17 +61,17 @@ class MedicalRecord extends React.Component {
 												<tbody>
 													<tr>
 														<td>
-															<Link to="/invoice-view">#INV-0010</Link>
+															<Link to="/invoice-view">Đã chích</Link>
 														</td>
 														<td>
 															<h2 className="table-avatar">
 																<Link to="" className="avatar avatar-sm mr-2">
 																	<img className="avatar-img rounded-circle" src={UserImg} alt="User Image" />
 																</Link>
-																<Link to="">Julie Sterns <span>#ST0016</span></Link>
+																<Link to="">Julie Sterns</Link>
 															</h2>
 														</td>
-														<td>$450</td>
+														<td><Link to="view-vaccine">tới thông tin vaccine</Link></td>
 														<td>14 Nov 2019</td>
 														<td className="text-right">
 															<div className="table-action">

@@ -40,7 +40,8 @@ import {
     MedicalRecord,
     MedicalRecordView,
     HandlingPayment,
-    Customer
+    Customer,
+    VaccineView
 
 } from '../pages';
 
@@ -112,7 +113,8 @@ class RouterComponent extends React.Component {
                         <Route path="/customer-sidebar" component={CustomerSidebar} />
                         
                         <Route path="/medical-record" component={MedicalRecord} />
-                        <Route path="/medical-record-view" component={MedicalRecordView} />
+                        <Route path="/view-medical-record" component={MedicalRecordView} />
+                        <Route path="/view-vaccine" component={VaccineView} />
                     </Switch>
                     <Route render={(props) => <Footer {...props} />} />
                     

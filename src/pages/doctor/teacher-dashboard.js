@@ -26,6 +26,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faCalendarCheck, faCheck, faEye, faTimes, faUserGraduate } from '@fortawesome/fontawesome-free-solid';
 
 class TeacherDashboard extends React.Component {
+	constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            data: []
+        };
+    }
+    componentDidMount() {
+        fetch("http://localhost:3000/appointment")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        data: result.data
+                    })
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    })
+                }
+            )
+    }
 	
     render() {
         return (
@@ -154,6 +180,37 @@ class TeacherDashboard extends React.Component {
 																				</div>
 																			</td>
 																		</tr>
+
+																		{
+																			this.state.isLoaded ? this.state.data['record'].map(item => (
+																				<tr>
+																					<td>
+																						<h2 className="table-avatar">
+																							<Link to="/student-profile" className="avatar avatar-sm mr-2"><img className="avatar-img rounded-circle" src={UserAvatar} alt="User Image" /></Link>
+																							<Link to="/student-profile">{item['Customer']['Name']} <span>#ST0016</span></Link>
+																						</h2>
+																					</td>
+																					<td>{item['Customer']['Date']}</td>
+																					<td>General</td>
+																					<td>New Customer</td>
+																					<td className="text-center">$150</td>
+																					<td className="text-right">
+																						<div className="table-action">
+																							<Link to="#" className="btn btn-sm bg-info-light mr-1">
+																								<FontAwesomeIcon icon={faEye} /> View
+																							</Link>
+																							
+																							<Link to="#" className="btn btn-sm bg-success-light mr-1">
+																								<FontAwesomeIcon icon={faCheck} /> Accept
+																							</Link>
+																							<Link to="#" className="btn btn-sm bg-danger-light">
+																								<FontAwesomeIcon icon={faTimes} /> Cancel
+																							</Link>
+																						</div>
+																					</td>
+																				</tr>
+																			)) : ''
+																		}
 																	</tbody>
 																</table>		
 															</div>

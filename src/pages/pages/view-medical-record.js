@@ -5,6 +5,33 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 
 class MedicalRecordView extends React.Component {
+
+	constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            isLoaded: false,
+            data: []
+        };
+    }
+    componentDidMount() {
+        fetch("http://localhost:3000/healthrecord")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        data: result.data[0]
+                    })
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    })
+                }
+            )
+    }
 	
     render() {
         return (
@@ -17,10 +44,10 @@ class MedicalRecordView extends React.Component {
 								<nav aria-label="breadcrumb" className="page-breadcrumb">
 									<ol className="breadcrumb">
 										<li className="breadcrumb-item"><Link to="/">Home</Link></li>
-										<li className="breadcrumb-item active" aria-current="page">Invoice View</li>
+										<li className="breadcrumb-item active" aria-current="page">Medical Record View</li>
 									</ol>
 								</nav>
-								<h2 className="breadcrumb-title">Invoice View</h2>
+								<h2 className="breadcrumb-title">Medical Record View</h2>
 							</div>
 						</div>
 					</div>
@@ -30,7 +57,6 @@ class MedicalRecordView extends React.Component {
 				{/* Page Content */}
 				<div className="content">
 					<div className="container">
-
 						<div className="row">
 							<div className="col-lg-8 offset-lg-2">
 								<div className="invoice-content">
@@ -44,7 +70,7 @@ class MedicalRecordView extends React.Component {
 											<div className="col-md-6">
 												<p className="invoice-details">
 													<strong>Order:</strong> #00124 <br />
-													<strong>Issued:</strong> 20/07/2021
+													<strong>Date Injected:</strong> 20/07/2021
 												</p>
 											</div>
 										</div>
@@ -55,38 +81,21 @@ class MedicalRecordView extends React.Component {
 										<div className="row">
 											<div className="col-md-6">
 												<div className="invoice-info">
-													<strong className="customer-text">Invoice From</strong>
+													<strong className="customer-text">Information Customer</strong>
 													<p className="invoice-details invoice-details-two">
-														Ruth Smith <br />
-														806  Twin Willow Lane, Old Forge,<br />
-														Newyork, USA <br />
+														{this.state.isLoaded ? this.state.data['customer']['Name'] : ''} <br />
+														{this.state.isLoaded ? this.state.data['customer']['PhoneNumber'] : ''} <br />
+														{this.state.isLoaded ? this.state.data['customer']['Address'] : ''} <br />
 													</p>
 												</div>
 											</div>
-											<div className="col-md-6">
-												<div className="invoice-info invoice-info2">
-													<strong className="customer-text">Invoice To</strong>
-													<p className="invoice-details">
-														Walter Roberson <br />
-														299 Star Trek Drive, Panama City, <br />
-														Florida, 32405, USA <br />
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									{/* Invoice Item */}
-									
-									{/* Invoice Item */}
-									<div className="invoice-item">
-										<div className="row">
-											<div className="col-md-12">
+                                            <div className="col-md-6">
 												<div className="invoice-info">
-													<strong className="customer-text">Payment Method</strong>
+													<strong className="customer-text">Information Doctor</strong>
 													<p className="invoice-details invoice-details-two">
-														Debit Card <br />
-														XXXXXXXXXXXX-2541 <br />
-														HDFC Bank<br />
+														{this.state.isLoaded ? this.state.data['record'][0]['Doctor']['name'] : ''} <br />
+														{this.state.isLoaded ? this.state.data['record'][0]['Doctor']['PhoneNumber'] : ''} <br />
+														{this.state.isLoaded ? this.state.data['record'][0]['Doctor']['Specialist'] : ''} <br />
 													</p>
 												</div>
 											</div>
@@ -102,25 +111,23 @@ class MedicalRecordView extends React.Component {
 													<table className="invoice-table table table-bordered">
 														<thead>
 															<tr>
-																<th>Description</th>
-																<th className="text-center">Quantity</th>
-																<th className="text-center">VAT</th>
-																<th className="text-right">Total</th>
+																<th className="text-center">Diagnostic</th>
+																<th className="text-center">Vaccine</th>
+																<th className="text-center">Price</th>
+																<th className="text-center">Status</th>
+																<th className="text-right">Date</th>
 															</tr>
 														</thead>
 														<tbody>
-															<tr>
-																<td>General Session</td>
-																<td className="text-center">1</td>
-																<td className="text-center">$0</td>
-																<td className="text-right">$100</td>
-															</tr>
-															<tr>
-																<td>Video Call Booking</td>
-																<td className="text-center">1</td>
-																<td className="text-center">$0</td>
-																<td className="text-right">$250</td>
-															</tr>
+															{this.state.isLoaded ? this.state.data['record'].map((item) => (
+																<tr>
+																	<td className="text-right">{item['Diagnostic']}</td>
+																	<td className="text-right">{item['Vaccine']['name']}</td>
+																	<td className="text-right">{item['Vaccine']['Price']}</td>
+																	<td className="text-center">{item['Status']}</td>
+																	<td className="text-right">{item['DayInject']}</td>
+																</tr>
+															)) : ''}
 														</tbody>
 													</table>
 												</div>
@@ -130,16 +137,17 @@ class MedicalRecordView extends React.Component {
 													<table className="invoice-table-two table">
 														<tbody>
 														<tr>
-															<th>Subtotal:</th>
-															<td><span>$350</span></td>
-														</tr>
-														<tr>
-															<th>Discount:</th>
-															<td><span>-10%</span></td>
-														</tr>
-														<tr>
 															<th>Total Amount:</th>
-															<td><span>$315</span></td>
+															<td>
+																<span>
+																	{
+																		this.state.isLoaded ? this.state.data['record'].reduce(
+																			(prev, cur) => prev + ~~cur['Vaccine']['Price'].replace(/\D/g, ""),
+																			0
+																		) : ''
+																	} VND
+																</span>
+															</td>
 														</tr>
 														</tbody>
 													</table>
@@ -151,17 +159,14 @@ class MedicalRecordView extends React.Component {
 									
 									{/* Invoice Information */}
 									<div className="other-info">
-										<h4>Other information</h4>
-										<p className="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p>
+										<h4>Note:</h4>
+										<p className="text-muted mb-0">Thông tin vaccine</p>
 									</div>
 									{/* Invoice Information */}
-									
 								</div>
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 				{/* Page Content */}
 			</div>
